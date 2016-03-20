@@ -11,52 +11,6 @@ and may not be redistributed without written permission.*/
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
-//Character class
-class Player{
-
-	public:
-		Player();
-		int get_xpos();
-		int get_ypos();
-		void move(char);
-	private:
-		int xpos;
-		int ypos; 
-
-
-
-};
-Player::Player()
-{
-	xpos = SCREEN_WIDTH/2;
-	ypos = SCREEN_HEIGHT/2;
-
-}
-int Player::get_xpos(){
-	return xpos;
-}
-int Player::get_ypos(){
-	return ypos;
-}
-void Player::move(char dir)
-{
-	int move_vert_val = 5;
-	int move_horiz_val = 5;
-	switch(dir)
-	{
-		case 'd':
-			ypos += move_vert_val;
-			break;
-		case 'u':
-			ypos -= move_vert_val;
-			break;
-		case 'l': 
-			xpos -= move_horiz_val;
-			break;
-		case 'r':
-			xpos += move_horiz_val;
-	}
-}
 
 //Texture wrapper class
 class LTexture
@@ -90,11 +44,73 @@ class LTexture
 		int mHeight;
 };
 
+
+//Character class
+class Player{
+
+	public:
+		Player();
+		~Player();
+		int get_xpos();
+		int get_ypos();
+		void move(char);
+		bool loadMedia();
+		void render();
+	private:
+		int xpos;
+		int ypos; 
+		//Scene sprites
+		SDL_Rect gSpriteClips[ 4 ];
+		LTexture gSpriteSheetTexture;
+
+
+
+};
+Player::Player()
+{
+	xpos = SCREEN_WIDTH/2;
+	ypos = SCREEN_HEIGHT/2;
+
+}
+Player::~Player()
+
+{
+	gSpriteSheetTexture.free();
+}
+int Player::get_xpos(){
+	return xpos;
+}
+int Player::get_ypos(){
+	return ypos;
+}
+void Player::move(char dir)
+{
+	int move_vert_val = 5;
+	int move_horiz_val = 5;
+	switch(dir)
+	{
+		case 'd':
+			ypos += move_vert_val;
+			break;
+		case 'u':
+			ypos -= move_vert_val;
+			break;
+		case 'l': 
+			xpos -= move_horiz_val;
+			break;
+		case 'r':
+			xpos += move_horiz_val;
+			break;
+	}
+}
+
+void Player::render()
+{
+	gSpriteSheetTexture.render( xpos, ypos, &gSpriteClips[ 0 ] );
+}
 //Starts up SDL and creates window
 bool init();
 
-//Loads media
-bool loadMedia();
 
 //Frees media and shuts down SDL
 void close();
@@ -105,9 +121,6 @@ SDL_Window* gWindow = NULL;
 //The window renderer
 SDL_Renderer* gRenderer = NULL;
 
-//Scene sprites
-SDL_Rect gSpriteClips[ 4 ];
-LTexture gSpriteSheetTexture;
 
 
 LTexture::LTexture()
@@ -257,7 +270,7 @@ bool init()
 	return success;
 }
 
-bool loadMedia()
+bool Player::loadMedia()
 {
 	//Loading success flag
 	bool success = true;
@@ -301,7 +314,7 @@ bool loadMedia()
 void close()
 {
 	//Free loaded images
-	gSpriteSheetTexture.free();
+//	gSpriteSheetTexture.free();
 
 	//Destroy window	
 	SDL_DestroyRenderer( gRenderer );
@@ -325,7 +338,7 @@ int main( int argc, char* args[] )
 	else
 	{
 		//Load media
-		if( !loadMedia() )
+		if( !player_character.loadMedia() )
 		{
 			printf( "Failed to load media!\n" );
 		}
@@ -375,7 +388,7 @@ int main( int argc, char* args[] )
 				SDL_RenderClear( gRenderer );
 
 				//Render top left sprite
-				gSpriteSheetTexture.render( player_character.get_xpos(), player_character.get_ypos(), &gSpriteClips[ 0 ] );
+				player_character.render();
 
 				//Render top right sprite
 				//gSpriteSheetTexture.render( SCREEN_WIDTH - gSpriteClips[ 1 ].w, 0, &gSpriteClips[ 1 ] );

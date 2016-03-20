@@ -11,6 +11,53 @@ and may not be redistributed without written permission.*/
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
+//Character class
+class Player{
+
+	public:
+		Player();
+		int get_xpos();
+		int get_ypos();
+		void move(char);
+	private:
+		int xpos;
+		int ypos; 
+
+
+
+};
+Player::Player()
+{
+	xpos = SCREEN_WIDTH/2;
+	ypos = SCREEN_HEIGHT/2;
+
+}
+int Player::get_xpos(){
+	return xpos;
+}
+int Player::get_ypos(){
+	return ypos;
+}
+void Player::move(char dir)
+{
+	int move_vert_val = 5;
+	int move_horiz_val = 5;
+	switch(dir)
+	{
+		case 'd':
+			ypos += move_vert_val;
+			break;
+		case 'u':
+			ypos -= move_vert_val;
+			break;
+		case 'l': 
+			xpos -= move_horiz_val;
+			break;
+		case 'r':
+			xpos += move_horiz_val;
+	}
+}
+
 //Texture wrapper class
 class LTexture
 {
@@ -269,6 +316,7 @@ void close()
 
 int main( int argc, char* args[] )
 {
+	Player player_character;	
 	//Start up SDL and create window
 	if( !init() )
 	{
@@ -300,6 +348,26 @@ int main( int argc, char* args[] )
 					{
 						quit = true;
 					}
+					else if (e.type == SDL_KEYDOWN)
+					{
+						switch( e.key.keysym.sym )
+						{
+
+							case SDLK_UP:
+								player_character.move('u');
+								break;
+							case SDLK_DOWN:
+								player_character.move('d');
+								break;
+							case SDLK_LEFT:
+								player_character.move('l');
+								break;
+							case SDLK_RIGHT:
+								player_character.move('r');
+								break;
+
+						}
+					}
 				}
 
 				//Clear screen
@@ -307,7 +375,7 @@ int main( int argc, char* args[] )
 				SDL_RenderClear( gRenderer );
 
 				//Render top left sprite
-				gSpriteSheetTexture.render( 0, 0, &gSpriteClips[ 0 ] );
+				gSpriteSheetTexture.render( player_character.get_xpos(), player_character.get_ypos(), &gSpriteClips[ 0 ] );
 
 				//Render top right sprite
 				//gSpriteSheetTexture.render( SCREEN_WIDTH - gSpriteClips[ 1 ].w, 0, &gSpriteClips[ 1 ] );

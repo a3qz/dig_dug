@@ -4,3 +4,10 @@ Internally, the function works based on a loop in main and an instance of a char
 
 The project git repo can be viewed at:
 https://github.com/a3qz/dig_dug
+
+In order to compile and run what I have completed for this assignment, you should enter the ryan_inclass/lab_8_checkin folder and run make.  After that, execute the executable named main.  You can move Dig Dug in all four direction with the arrow keys, and exit the program by x-ing it out.  
+
+The Excel Spreadsheet included in this folder is our timelog.  It can also be accessed at :
+https://docs.google.com/spreadsheets/d/1_oODkY1Xm41ydkTGvraeTkIIeqj-HuKvUVwQ2rqglJA/edit?usp=sharing
+
+

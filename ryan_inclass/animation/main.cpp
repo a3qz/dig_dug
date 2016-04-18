@@ -8,8 +8,8 @@ and may not be redistributed without written permission.*/
 #include <string>
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+const int SCREEN_WIDTH = 504;
+const int SCREEN_HEIGHT = 684;
 
 
 //Texture wrapper class

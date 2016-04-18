@@ -359,19 +359,19 @@ bool Player::loadMedia()
 		gSpriteClips[ 8 ].x = 544;
 		gSpriteClips[ 8 ].y = 38;
 		gSpriteClips[ 8 ].w = 36;
-		gSpriteClips[ 9 ].h = 15;
+		gSpriteClips[ 8 ].h = 38;
 
 		gSpriteClips[ 9 ].x = 502;
 		gSpriteClips[ 9 ].y = 36;
 		gSpriteClips[ 9 ].w = 36;
-		gSpriteClips[ 9 ].h = 11;
+		gSpriteClips[ 9 ].h = 36;
 
 
 		// Walking down right sprites
 		gSpriteClips[ 10 ].x = 0;
 		gSpriteClips[ 10 ].y = 38;
 		gSpriteClips[ 10 ].w = 39;
-		gSpriteClips[ 10 ].h = 34;
+		gSpriteClips[ 10 ].h = 38;
 
 		gSpriteClips[ 11 ].x = 38;
 		gSpriteClips[ 11 ].y = 38;

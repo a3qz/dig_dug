@@ -119,7 +119,12 @@ void Player::move(char dir)
 	switch(dir)
 	{
 		case 'd':
-			ypos += move_vert_val;
+      if (ypos + move_vert_val > 604){
+        ypos = ypos;
+      }
+      else{
+        ypos += move_vert_val;
+      }
 			if ((dirstat == 2)| (dirstat == 4 ) | (dirstat == 8)){
 			
 				dirstat = 8;
@@ -129,7 +134,12 @@ void Player::move(char dir)
 			}
 			break;
 		case 'u':
-			ypos -= move_vert_val;
+      if (ypos - move_vert_val < 108){
+        ypos = ypos;
+      }
+      else{
+        ypos -= move_vert_val;
+      }
 			if ((dirstat == 2)| (dirstat == 4 ) | (dirstat == 8)){
 			
 				dirstat = 4;
@@ -139,11 +149,21 @@ void Player::move(char dir)
 			}
 			break;
 		case 'l': 
-			xpos -= move_horiz_val;
+      if (xpos - move_horiz_val < 0){
+        xpos = xpos;
+      }
+      else{
+        xpos -= move_horiz_val;
+      }
 			dirstat = 2;
 			break;
 		case 'r':
-			xpos += move_horiz_val;
+      if (xpos + move_horiz_val > 475){
+        xpos = xpos;
+      }
+      else{
+        xpos += move_horiz_val;
+      }
 			dirstat = 0;
 			break;
 	}
@@ -517,6 +537,7 @@ int main( int argc, char* args[] )
 
 				//Clear screen
 				//SDL_SetRenderDrawColor( gRenderer, 255, 156, 0, 0xFF );
+				SDL_SetRenderDrawColor( gRenderer, 0, 0, 0, 0xFF );
 				SDL_SetRenderDrawColor( gRenderer, 0, 0, 0, 0xFF );
 				SDL_RenderClear( gRenderer );
 

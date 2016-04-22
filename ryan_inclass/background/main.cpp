@@ -633,10 +633,8 @@ int main( int argc, char* args[] )
 					{
 						quit = true;
 					}
-					else if ((e.type == SDL_KEYDOWN) & ((time(NULL) - lastmod) > 1))
+					else if ((e.type == SDL_KEYDOWN) ) //& ((time(NULL) - lastmod) > 1))
 					{
-						SDL_RenderClear( gRenderer );
-						board.render();
 						switch( e.key.keysym.sym )
 						{
 

@@ -28,5 +28,8 @@ int Point::gety(){
 char Point::getColor(){
 	return color;
 }
+void Point::setColor(char k){
+	color = k;
+}
 
 

@@ -8,6 +8,9 @@
 #include <stdio.h>
 #include <string>
 #include "tempBoard.h"
+#include "Character.h"
+#include "LTexture.h"
+
 using namespace std;
 
 //Screen dimension constants
@@ -36,7 +39,7 @@ int main( int argc, char* args[] )
 
 	int lastmod = 0;
 	tempBoard board;
-	//Player player_character;	
+	Character player_character;	
 	//Start up SDL and create window
 	if( !init(gRenderer, gWindow) )
 	{
@@ -45,7 +48,7 @@ int main( int argc, char* args[] )
 	else
 	{
 		//Load media
-   // player_character.loadMedia();
+   	player_character.loadMedia(gRenderer);
 
 
 		if( !board.loadMedia( gRenderer) )
@@ -63,6 +66,8 @@ int main( int argc, char* args[] )
 			//While application is running
 			SDL_RenderClear( gRenderer );
 			board.render(gRenderer);
+			player_character.render(gRenderer);
+			player_character.render(gRenderer);
 			while( !quit )
 			{
 				//Handle events on queue
@@ -79,23 +84,27 @@ int main( int argc, char* args[] )
 						{
 
 							case SDLK_UP:
-							//	player_character.move('u');
+								player_character.move('u');
+								cout << 'u'<< endl;
 								lastmod = time(NULL);
 				//	player_character.render();
 
 								break;
 							case SDLK_DOWN:
-							//	player_character.move('d');
+								player_character.move('d');
+								cout << 'd'<< endl;
 								lastmod = time(NULL);
 					//player_character.render();
 								break;
 							case SDLK_LEFT:
-							//	player_character.move('l');
+								player_character.move('l');
+								cout << 'l' << endl;
 								lastmod = time(NULL);
 					//player_character.render();
 								break;
 							case SDLK_RIGHT:
-							//	player_character.move('r');
+								player_character.move('r');
+								cout << 'r' <<endl;
 								lastmod = time(NULL);
 					//player_character.render();
 								break;
@@ -104,7 +113,9 @@ int main( int argc, char* args[] )
 								break;
 
 						}
-//					player_character.render();
+					player_character.dug(gRenderer,board );
+					player_character.render(gRenderer);
+					player_character.render(gRenderer);
 					SDL_RenderPresent( gRenderer );
 					}
 				}

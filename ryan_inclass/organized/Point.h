@@ -4,6 +4,7 @@ using namespace std;
 
 class Point{
 	friend class tempBoard;
+	friend class Character;
 
 	public:
 		Point(  );
@@ -14,7 +15,7 @@ class Point{
 		int getx();
 		int gety();
 		char getColor();
-		void setColor();
+		void setColor(char k);
 		void setx();
 	private:
 		char color;

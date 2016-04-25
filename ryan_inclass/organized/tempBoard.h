@@ -5,8 +5,10 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "Point.h"
+class Character;
 class tempBoard{
 
+	friend class Character;
 
 	public:
 		    tempBoard();

@@ -209,15 +209,15 @@ gSpriteClips[ 33 ].h =  52;
 
 // Eigth Fygar
 gSpriteClips[ 34 ].x = 289;
-gSpriteClips[ 34 ].y = 309;
-gSpriteClips[ 34 ].w =  35;
-gSpriteClips[ 34 ].h = 102;
+gSpriteClips[ 34 ].y = 207;
+gSpriteClips[ 34 ].w =  55;
+gSpriteClips[ 34 ].h =  57;
 
 // Ninth Fygar (popped)
 gSpriteClips[ 35 ].x = 344;
 gSpriteClips[ 35 ].y = 202;
 gSpriteClips[ 35 ].w =  65;
-gSpriteClips[ 35 ].h = 168;
+gSpriteClips[ 35 ].h =  62;
 
 // Finished Right Facing Fygar.  Starting Left Facing Fygar
 
@@ -233,8 +233,45 @@ gSpriteClips[ 37 ].y = 278;
 gSpriteClips[ 37 ].w =  37;
 gSpriteClips[ 37 ].h =  37;
 
-// Third Fygar
-gSpriteClips[ 38 ].x = 289;
-gSpriteClips[ 38 ].y = 309;
-gSpriteClips[ 38 ].w =  35;
-gSpriteClips[ 38 ].h = 102;
+// Third Fygar (Starting to Blow up)
+gSpriteClips[ 38 ].x = 353;
+gSpriteClips[ 38 ].y = 281;
+gSpriteClips[ 38 ].w =  40;
+gSpriteClips[ 38 ].h =  37;
+
+// Fourth Fygar
+gSpriteClips[ 39 ].x = 397;
+gSpriteClips[ 39 ].y = 272;
+gSpriteClips[ 39 ].w =  54;
+gSpriteClips[ 39 ].h =  52;
+
+// Fifth Fygar
+gSpriteClips[ 40 ].x = 460;
+gSpriteClips[ 40 ].y = 266;
+gSpriteClips[ 40 ].w =  55;
+gSpriteClips[ 40 ].h =  57;
+
+// Sixth Fygar (Popped)
+gSpriteClips[ 41 ].x = 531;
+gSpriteClips[ 41 ].y = 266;
+gSpriteClips[ 41 ].w =  64;
+gSpriteClips[ 41 ].h =  62;
+
+// Left Fygar's First Fire
+gSpriteClips[ 42 ].x = 500;
+gSpriteClips[ 42 ].y = 339;
+gSpriteClips[ 42 ].w =  43;
+gSpriteClips[ 42 ].h =  37;
+
+// Left Fygar's Second Fire
+gSpriteClips[ 43 ].x = 412;
+gSpriteClips[ 43 ].y = 331;
+gSpriteClips[ 43 ].w =  85;
+gSpriteClips[ 43 ].h =  44;
+
+// Left Fygar's Third Fire
+gSpriteClips[ 44 ].x = 287;
+gSpriteClips[ 44 ].y = 334;
+gSpriteClips[ 44 ].w = 126;
+gSpriteClips[ 44 ].h =  46;
+

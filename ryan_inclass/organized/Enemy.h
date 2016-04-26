@@ -16,33 +16,17 @@ class Enemy : public Character{
 	friend class tempBoard;
 	
 	public:
-		void draw(int); // draws int number of enemies on the board
+		Enemy();
+		~Enemy();
+		void draw(int); // draws int number of enemies on the board 
 		void AI(); // enemy's movement
-		
-		/*
-		Get Functions
-		*/
-		int getXpos();
-		int getYpos();
-		int getState();
-		int getSpeed();
-		int getNum();
+		int get_num(); // returns number of enemies on the board
+		int get_type(); // returns type of enemy
 
 	private:
-		int xpos; // x position
-		int ypos; // y position
-		int speed; // how fast the enemy is travelling - incremented as level increases
-		int state; // moving, attacking, dead
 		int num; // number of enemies
+		int type; // fygar or pooka - unless you just want two spearate classes for them
 
 };
-
-
-
-
-
-
-
-
 
 #endif

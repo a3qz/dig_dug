@@ -275,3 +275,38 @@ gSpriteClips[ 44 ].y = 334;
 gSpriteClips[ 44 ].w = 126;
 gSpriteClips[ 44 ].h =  46;
 
+// Flower
+gSpriteClips[ 45 ].x =   0;
+gSpriteClips[ 45 ].y = 361;
+gSpriteClips[ 45 ].w =  33;
+gSpriteClips[ 45 ].h =  35;
+
+// Player Dying
+gSpriteClips[ 46 ].x =   0;
+gSpriteClips[ 46 ].y = 318;
+gSpriteClips[ 46 ].w =  41;
+gSpriteClips[ 46 ].h =  38;
+
+// Player Dying Second
+gSpriteClips[ 47 ].x =  43;
+gSpriteClips[ 47 ].y = 313;
+gSpriteClips[ 47 ].w =  43;
+gSpriteClips[ 47 ].h =  43;
+
+// Player Dying Third
+gSpriteClips[ 48 ].x =  88;
+gSpriteClips[ 48 ].y = 313;
+gSpriteClips[ 48 ].w =  43;
+gSpriteClips[ 48 ].h =  43;
+
+// Player Dying Fourth
+gSpriteClips[ 49 ].x = 133;
+gSpriteClips[ 49 ].y = 318;
+gSpriteClips[ 49 ].w =  43;
+gSpriteClips[ 49 ].h =  38;
+
+// Poof He's Dead
+gSpriteClips[ 50 ].x = 180;
+gSpriteClips[ 50 ].y = 320;
+gSpriteClips[ 50 ].w =  31;
+gSpriteClips[ 50 ].h =  31;

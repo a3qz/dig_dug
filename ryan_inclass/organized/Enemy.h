@@ -10,7 +10,7 @@
 #include "Character.h"
 
 using namespace std;
-//
+//I'm going to be really pissed off at Ryan if Breanna is right
 class Enemy : public Character{
 
 	friend class tempBoard;

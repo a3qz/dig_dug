@@ -6,8 +6,11 @@ using namespace std;
 Enemy::Enemy()
 {
 	type = 27;
-	xpos = 504/2 + 50;
-	ypos = 684/2 + 50;
+
+	xpos = rand()%475;
+	ypos = rand()%496 +108; 
+	//xpos = 504/2 + 50;
+	//ypos = 684/2 + 50;
 	dirstat = 0;
 	walkanimatecount = 0;
 	a.x = xpos;
@@ -350,8 +353,8 @@ void Enemy::dug(SDL_Renderer *& gRenderer, tempBoard & myBoard) {
 	}
 
 	SDL_SetRenderDrawColor( gRenderer, 0, 0, 0, 0);
-	cout << a.x << endl;
-	cout << xpos << endl;
+	//cout << a.x << endl;
+	//cout << xpos << endl;
 	SDL_RenderFillRect( gRenderer, &r);
 
 }
@@ -472,3 +475,27 @@ void Enemy::gmove(char dir)
 	}
 
 }
+ void Enemy::set_xpos (int n){
+ 	xpos = n;
+	a.x = xpos;
+	a.y = ypos;
+	a.w = 36;
+	a.h = 36;
+	r.x = xpos;
+	r.y = ypos;
+	r.w = 36;
+	r.h = 36;
+
+ }
+ void Enemy::set_ypos (int n){
+ 	ypos = n;
+	a.x = xpos;
+	a.y = ypos;
+	a.w = 36;
+	a.h = 36;
+	r.x = xpos;
+	r.y = ypos;
+	r.w = 36;
+	r.h = 36;
+
+ }

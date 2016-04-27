@@ -12,6 +12,7 @@
 class Character {
 	friend class tempBoard;
 	friend class Enemy;
+	friend class Flower;
 
 	public:
 		Character();
@@ -20,7 +21,7 @@ class Character {
 		bool loadMedia(SDL_Renderer *& gRenderer);
 		void render(SDL_Renderer *& gRenderer);
 		void dug(SDL_Renderer *& gRenderer, tempBoard & asd );
-		void shoot(SDL_Renderer *& gRenderer, TempBoard & myBoard)
+		void shoot(SDL_Renderer *& gRenderer, tempBoard & myBoard);
 		/*
 		Get Functions
 		*/

@@ -1,6 +1,7 @@
 
 //Using SDL, SDL_image, standard math, and strings
 #include <ctime>
+#include <cstdlib>
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <unistd.h>
@@ -12,10 +13,12 @@
 #include "LTexture.h"
 #include "Enemy.h"
 #include <vector>
+#include "Flower.h"
 
 using namespace std;
 
 int check_dead(int player_x, int player_y, vector<int> monster_locations);
+int check_flower(int player_x, int player_y, int flower_x, int flower_y);
 //Screen dimension constants
 const int SCREEN_WIDTH = 504;
 const int SCREEN_HEIGHT = 684;
@@ -34,6 +37,10 @@ void close(SDL_Renderer *& gRenderer, SDL_Window *& gWindow);
 int main( int argc, char* args[] )
 {
 
+	srand(time(0));
+	cout << rand() << endl;
+	cout << rand() << endl;
+	cout << rand() << endl;
 	//The window we'll be rendering to
 	SDL_Window* gWindow = NULL;
 
@@ -44,7 +51,19 @@ int main( int argc, char* args[] )
 	int lastmod = 0;
 	tempBoard board;
 	Character player_character;	
-	Enemy enemy;
+	Flower winflower;
+	//Enemy enemy;
+	int numEnemies = 3;
+	vector<Enemy> enVec;
+	for (int i = 0; i < numEnemies; i++){
+		Enemy enemy;
+		enVec.push_back(enemy);
+		enVec[i].set_xpos(rand()%475);
+		rand();
+		rand();
+		rand();
+		enVec[i].set_ypos(rand()%496 + 108);
+	}
 	//Start up SDL and create window
 	if( !init(gRenderer, gWindow) )
 	{
@@ -54,7 +73,10 @@ int main( int argc, char* args[] )
 	{
 		//Load media
    	player_character.loadMedia(gRenderer);
-   	enemy.loadMedia(gRenderer);
+	for (int i = 0; i < numEnemies; i++){
+		enVec[i].loadMedia(gRenderer);
+	}
+   	winflower.loadMedia(gRenderer);
 
 
 		if( !board.loadMedia( gRenderer) )
@@ -74,8 +96,10 @@ int main( int argc, char* args[] )
 			board.render(gRenderer);
 			player_character.render(gRenderer);
 			player_character.render(gRenderer);
-			enemy.render(gRenderer);
-			enemy.render(gRenderer);
+			for (int i = 0; i < numEnemies; i++){
+				enVec[i].render(gRenderer);
+				enVec[i].render(gRenderer);
+			}
 			while( !quit )
 			{
 				//usleep(50000);
@@ -142,24 +166,36 @@ int main( int argc, char* args[] )
 			//	gSpriteSheetTexture.render( SCREEN_WIDTH - gSpriteClips[ 3 ].w, SCREEN_HEIGHT - gSpriteClips[ 3 ].h, &gSpriteClips[ 3 ] );
 
 				//Update screen
-				//enemy.AI(gRenderer, player_character.get_xpos(), player_character.get_ypos());
+				for (int i = 0; i < numEnemies; i++){
+					enVec[i].AI(gRenderer, player_character.get_xpos(), player_character.get_ypos());
+				}
 				//enemy.asdf();
-				contact.empty();
-				contact.push_back(enemy.get_xpos());
-				contact.push_back(enemy.get_ypos());
+				contact.clear();
+				for (int i = 0; i < numEnemies; i++){
+					contact.push_back(enVec[i].get_xpos());
+					contact.push_back(enVec[i].get_ypos());
+				}
+
 				if (check_dead(player_character.get_xpos(), player_character.get_ypos(), contact)){
 					cout << "DIEEEEEEEEEEE" << endl;
 					player_character.die(gRenderer, board);
 					SDL_RenderPresent( gRenderer );
 					return 0;
 				}
+				if (check_flower(player_character.get_xpos(), player_character.get_ypos(), winflower.get_xpos(), winflower.get_ypos())){
+					return 0;		
+				}
 				
-				enemy.dug(gRenderer,board);
-				enemy.render(gRenderer);
-				enemy.render(gRenderer);
+				for (int i = 0; i < numEnemies; i++){
+					enVec[i].dug(gRenderer, board);
+					enVec[i].render(gRenderer);
+					enVec[i].render(gRenderer);
+				}
 				player_character.dug(gRenderer,board);
 				player_character.render(gRenderer);
 				player_character.render(gRenderer);
+				winflower.render(gRenderer);
+				winflower.render(gRenderer);
 				//SDL_RenderPresent( gRenderer );
 				SDL_RenderPresent( gRenderer );
 			}
@@ -259,6 +295,20 @@ int check_dead(int player_x, int player_y, vector<int> monster_locations){
 		}
 	}
 	return 0;
+
+
+}
+int check_flower(int player_x, int player_y, int flower_x, int flower_y){
+	cout << " Player: " << player_x << " " << player_y << endl << "Flower : " << flower_x << "  " << flower_y << endl;
+	if (( flower_x <= player_x + 35) & (flower_x + 35 >= player_x)){
+		cout << "ASD" << endl;
+		if (( flower_y <= player_y + 35) & (flower_y+35 >= player_y)){
+			cout << "FLOWER POWER" << endl;
+			return 1;
+		}
+	}
+	return 0;
+
 
 
 }

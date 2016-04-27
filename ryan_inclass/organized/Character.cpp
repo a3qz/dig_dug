@@ -570,7 +570,7 @@ void Character::die(SDL_Renderer *& gRenderer , tempBoard & myBoard){
 
 void Character::shoot(SDL_Renderer *& gRenderer , tempBoard & myBoard){
 
-	direction = get_dirstat();
+	int direction = dirstat;
 	
 	switch (direction)
 

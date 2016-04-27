@@ -5,6 +5,7 @@ using namespace std;
 class Point{
 	friend class tempBoard;
 	friend class Character;
+	friend class Enemy;
 
 	public:
 		Point(  );

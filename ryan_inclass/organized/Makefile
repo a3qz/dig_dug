@@ -20,8 +20,11 @@ Point.o:Point.h Point.cpp
 Character.o:Character.h Character.cpp
 	$(CC) Character.cpp -c -w -lSDL2_image -lSDL2 -o Character.o
 
-main : main.cpp sprites.png LTexture.o tempBoard.o Character.o
-			$(CC) main.cpp LTexture.o tempBoard.o Point.o Character.o -w -lSDL2 -lSDL2_image -lSDL2_ttf -o main
+Enemy.o:Enemy.h Enemy.cpp
+	$(CC) Enemy.cpp -c -w -lSDL2_image -lSDL2 -o Enemy.o
+
+main : main.cpp sprites.png LTexture.o tempBoard.o Character.o Enemy.o
+			$(CC) main.cpp LTexture.o tempBoard.o Point.o Character.o Enemy.o -w -lSDL2 -lSDL2_image -lSDL2_ttf -o main
 
 clean:
 	    rm -f $(TARGETS) *.o

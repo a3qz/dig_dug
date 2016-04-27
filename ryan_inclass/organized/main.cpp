@@ -10,9 +10,12 @@
 #include "tempBoard.h"
 #include "Character.h"
 #include "LTexture.h"
+#include "Enemy.h"
+#include <vector>
 
 using namespace std;
 
+void check_dead(int player_x, int player_y, vector<int> monster_locations);
 //Screen dimension constants
 const int SCREEN_WIDTH = 504;
 const int SCREEN_HEIGHT = 684;
@@ -30,16 +33,18 @@ void close(SDL_Renderer *& gRenderer, SDL_Window *& gWindow);
 
 int main( int argc, char* args[] )
 {
+
 	//The window we'll be rendering to
 	SDL_Window* gWindow = NULL;
 
 	//The window renderer
 	SDL_Renderer* gRenderer = NULL;
 
-
+	vector<int> contact;
 	int lastmod = 0;
 	tempBoard board;
 	Character player_character;	
+	Enemy enemy;
 	//Start up SDL and create window
 	if( !init(gRenderer, gWindow) )
 	{
@@ -49,6 +54,7 @@ int main( int argc, char* args[] )
 	{
 		//Load media
    	player_character.loadMedia(gRenderer);
+   	enemy.loadMedia(gRenderer);
 
 
 		if( !board.loadMedia( gRenderer) )
@@ -68,8 +74,11 @@ int main( int argc, char* args[] )
 			board.render(gRenderer);
 			player_character.render(gRenderer);
 			player_character.render(gRenderer);
+			enemy.render(gRenderer);
+			enemy.render(gRenderer);
 			while( !quit )
 			{
+				//usleep(50000);
 				//Handle events on queue
 				while( SDL_PollEvent( &e ) != 0 )
 				{
@@ -113,10 +122,6 @@ int main( int argc, char* args[] )
 								break;
 
 						}
-					player_character.dug(gRenderer,board );
-					player_character.render(gRenderer);
-					player_character.render(gRenderer);
-					SDL_RenderPresent( gRenderer );
 					}
 				}
 
@@ -137,6 +142,19 @@ int main( int argc, char* args[] )
 			//	gSpriteSheetTexture.render( SCREEN_WIDTH - gSpriteClips[ 3 ].w, SCREEN_HEIGHT - gSpriteClips[ 3 ].h, &gSpriteClips[ 3 ] );
 
 				//Update screen
+				//enemy.AI(gRenderer, player_character.get_xpos(), player_character.get_ypos());
+				//enemy.asdf();
+				contact.empty();
+				contact.push_back(enemy.get_xpos());
+				contact.push_back(enemy.get_ypos());
+				check_dead(player_character.get_xpos(), player_character.get_ypos(), contact);
+				enemy.dug(gRenderer,board);
+				enemy.render(gRenderer);
+				enemy.render(gRenderer);
+				player_character.dug(gRenderer,board);
+				player_character.render(gRenderer);
+				player_character.render(gRenderer);
+				//SDL_RenderPresent( gRenderer );
 				SDL_RenderPresent( gRenderer );
 			}
 		}
@@ -223,3 +241,16 @@ bool init(SDL_Renderer *& gRenderer, SDL_Window *& gWindow)
 }
 
 
+
+void check_dead(int player_x, int player_y, vector<int> monster_locations){
+	for (int i = 1; i < monster_locations.size() ; i += 2){
+		if ((monster_locations[i -1] <= player_x+35) & (monster_locations[i-1]+35 >= player_x )){
+				cout << "XCONTACT" << endl;
+			if((monster_locations[i] <= player_y+35) & (monster_locations[i]+35 >= player_y)){
+				cout << "YCONTACT" << endl;
+			}
+		}
+	}
+
+
+}

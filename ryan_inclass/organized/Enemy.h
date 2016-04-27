@@ -14,19 +14,37 @@ using namespace std;
 class Enemy : public Character{
 
 	friend class tempBoard;
+	friend class Character;
+	friend class Point;
 	
 	public:
 		Enemy();
 		~Enemy();
-		void draw(int); // draws int number of enemies on the board 
-		void AI(); // enemy's movement
+		void asdf();
+		void gmove(char dir);
+		//void draw(int); // draws int number of enemies on the board 
+		void AI(SDL_Renderer *& gRenderer, int, int); // enemy's movement
 		int get_num(); // returns number of enemies on the board
 		int get_type(); // returns type of enemy
+		bool loadMedia(SDL_Renderer *& gRenderer);
+		void render(SDL_Renderer *& gRenderer);
+		void dug(SDL_Renderer *& gRenderer, tempBoard & asd );
+		/*
+		Get Functions
+		*/
+		
+		int get_xpos();
+		int get_ypos();
+		int get_xspeed();
+		int get_yspeed();
+		int get_state();
+		int get_dirstat();
 
+		void set_state(int a);
 	private:
-		int num; // number of enemies
+		static int num; // number of enemies
+		SDL_Rect a;
 		int type; // fygar or pooka - unless you just want two spearate classes for them
 
 };
-
 #endif

@@ -20,6 +20,8 @@ Character::Character()
 	r.y = ypos;
 	r.w = 36;
 	r.h = 36;
+	move_vert_val = 8;
+	move_horiz_val = 5;
 }
 
 Character::~Character()
@@ -35,15 +37,13 @@ int Character::get_ypos(){
 }
 void Character::move(char dir)
 {
-	int move_vert_val = 8;
-	int move_horiz_val = 5;
 	switch(dir)
 	{
 		case 'd':
-	r.w = 47;
-	r.y = ypos ;
-	r.x = xpos;
-	r.h = 47;
+	r.w = 56;
+	r.y = ypos -8;
+	r.x = xpos - 7;
+	r.h = 55;
       if (ypos + move_vert_val > 604){
         ypos = ypos;
       }
@@ -60,10 +60,10 @@ void Character::move(char dir)
 			}
 			break;
 		case 'u':
-	r.w = 47;
-	r.y = ypos -5 ;
-	r.x = xpos;
-	r.h = 47;
+	r.w = 55;
+	r.y = ypos -7;
+	r.x = xpos - 7;
+	r.h = 55;
       if (ypos - move_vert_val < 108){
         ypos = ypos;
       }
@@ -79,10 +79,10 @@ void Character::move(char dir)
 			}
 			break;
 		case 'l': 
-	r.w = 47;
-	r.y = ypos;
-	r.x = xpos - 4;
-	r.h = 47;
+	r.w = 55;
+	r.y = ypos -7;
+	r.x = xpos - 7;
+	r.h = 55;
       if (xpos - move_horiz_val < 0){
         xpos = xpos;
       }
@@ -92,10 +92,10 @@ void Character::move(char dir)
 			dirstat = 2;
 			break;
 		case 'r':
-	r.w = 47;
-	r.y = ypos;
-	r.x = xpos ;
-	r.h = 47;
+	r.w = 55;
+	r.y = ypos -7 ;
+	r.x = xpos -7;
+	r.h = 55;
       if (xpos + move_horiz_val > 475){
         xpos = xpos;
       }

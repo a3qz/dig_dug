@@ -11,6 +11,7 @@
 //Character class
 class Character {
 	friend class tempBoard;
+	friend class Enemy;
 
 	public:
 		Character();
@@ -26,20 +27,21 @@ class Character {
 		int get_xpos();
 		int get_ypos();
 		int get_xspeed();
-		int get_yspeed()
+		int get_yspeed();
 		int get_state();
 		int get_dirstat();
 	private:
 		int xpos; // x position
 		int ypos; // y position
-		int xspeed; // x speed
-		int yspeed; // y speed
+		int move_vert_val; // x speed
+		int move_horiz_val; // y speed
 		int state; // walking, attacking, dead, still
 		int dirstat; // 0 = facing right, 2 = facing left, 6 = facin down, 4 = facing up - when getting attacked by enemies this is important
 		SDL_Rect r;
 		int walkanimatecount;
+		int type;
 		//Scene sprites
-		SDL_Rect gSpriteClips[ 12 ];
+		SDL_Rect gSpriteClips[ 45];
 		LTexture gSpriteSheetTexture;
 };
 #endif

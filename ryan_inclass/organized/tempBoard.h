@@ -9,6 +9,7 @@ class Character;
 class tempBoard{
 
 	friend class Character;
+	friend class Enemy;
 
 	public:
 		    tempBoard();

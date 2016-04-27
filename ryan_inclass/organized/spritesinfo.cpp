@@ -1,4 +1,4 @@
-// DONT FORGET WE STILL NEED TO MAP OUT THE PLAYER WITH HIS SHOVEL, unless we are just having him run around instead... he's digging so he should be using the shovel, unless you wanna say screw it and leave him just running around.  It's just a matter of mapping it and switching the sprite numbers
+// DONT FORGET WE STILL NEED TO Mhe right, going from right to left respectiveliAP OUT THE PLAYER WITH HIS SHOVEL, unless we are just having him run around instead... he's digging so he should be using the shovel, unless you wanna say screw it and leave him just running around.  It's just a matter of mapping it and switching the sprite numbers
 
 //Player walking to the right sprites
 
@@ -232,11 +232,6 @@ gSpriteClips[ 37 ].y = 278;
 gSpriteClips[ 37 ].w =  37;
 gSpriteClips[ 37 ].h =  37;
 
-// Right Fygar's Second Fire
-gSpriteClips[ 25 ].x =  47;
-gSpriteClips[ 25 ].y = 265;
-gSpriteClips[ 25 ].w =  85;
-gSpriteClips[ 25 ].h =  44;
 // Third Fygar (Starting to Blow up)
 gSpriteClips[ 38 ].x = 353;
 gSpriteClips[ 38 ].y = 281;
@@ -266,3 +261,51 @@ gSpriteClips[ 42 ].x = 500;
 gSpriteClips[ 42 ].y = 339;
 gSpriteClips[ 42 ].w =  43;
 gSpriteClips[ 42 ].h =  37;
+
+// Left Fygar's Second Fire
+gSpriteClips[ 43 ].x = 412;
+gSpriteClips[ 43 ].y = 331;
+gSpriteClips[ 43 ].w =  85;
+gSpriteClips[ 43 ].h =  44;
+
+// Left Fygar's Third Fire
+gSpriteClips[ 44 ].x = 287;
+gSpriteClips[ 44 ].y = 334;
+gSpriteClips[ 44 ].w = 126;
+gSpriteClips[ 44 ].h =  46;
+
+// Flower
+gSpriteClips[ 45 ].x =   0;
+gSpriteClips[ 45 ].y = 361;
+gSpriteClips[ 45 ].w =  33;
+gSpriteClips[ 45 ].h =  35;
+
+// Player Dying
+gSpriteClips[ 46 ].x =   0;
+gSpriteClips[ 46 ].y = 318;
+gSpriteClips[ 46 ].w =  41;
+gSpriteClips[ 46 ].h =  38;
+
+// Player Dying Second
+gSpriteClips[ 47 ].x =  43;
+gSpriteClips[ 47 ].y = 313;
+gSpriteClips[ 47 ].w =  43;
+gSpriteClips[ 47 ].h =  43;
+
+// Player Dying Third
+gSpriteClips[ 48 ].x =  88;
+gSpriteClips[ 48 ].y = 313;
+gSpriteClips[ 48 ].w =  43;
+gSpriteClips[ 48 ].h =  43;
+
+// Player Dying Fourth
+gSpriteClips[ 49 ].x = 133;
+gSpriteClips[ 49 ].y = 318;
+gSpriteClips[ 49 ].w =  43;
+gSpriteClips[ 49 ].h =  38;
+
+// Poof He's Dead
+gSpriteClips[ 50 ].x = 180;
+gSpriteClips[ 50 ].y = 320;
+gSpriteClips[ 50 ].w =  31;
+gSpriteClips[ 50 ].h =  31;

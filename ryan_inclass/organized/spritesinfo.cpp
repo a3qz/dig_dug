@@ -309,3 +309,69 @@ gSpriteClips[ 50 ].x = 180;
 gSpriteClips[ 50 ].y = 320;
 gSpriteClips[ 50 ].w =  31;
 gSpriteClips[ 50 ].h =  31;
+
+// Player with the Shovel facing right
+gSpriteClips[ 51 ].x =  73;
+gSpriteClips[ 51 ].y =   0;
+gSpriteClips[ 51 ].w =  38;
+gSpriteClips[ 51 ].h =  36;
+
+gSpriteClips[ 52 ].x = 113;
+gSpriteClips[ 52 ].y =   0;
+gSpriteClips[ 52 ].w =  38;
+gSpriteClips[ 52 ].h =  36;
+
+// Player with shovel facing down (right)
+gSpriteClips[ 53 ].x =  78;
+gSpriteClips[ 53 ].y =  38;
+gSpriteClips[ 53 ].w =  36;
+gSpriteClips[ 53 ].h =  38;
+
+gSpriteClips[ 54 ].x = 118;
+gSpriteClips[ 54 ].y =  38;
+gSpriteClips[ 54 ].w =  36;
+gSpriteClips[ 54 ].h =  38;
+
+// Player with shovel facing up (right)
+gSpriteClips[ 55 ].x =  78;
+gSpriteClips[ 55 ].y =  88;
+gSpriteClips[ 55 ].w =  36;
+gSpriteClips[ 55 ].h =  38;
+
+gSpriteClips[ 56 ].x = 118;
+gSpriteClips[ 56 ].y =  88;
+gSpriteClips[ 56 ].w =  36;
+gSpriteClips[ 56 ].h =  38;
+
+// Player with shovel facing left
+gSpriteClips[ 57 ].x = 428;
+gSpriteClips[ 57 ].y =   0;
+gSpriteClips[ 57 ].w =  38;
+gSpriteClips[ 57 ].h =  36;
+
+gSpriteClips[ 58 ].x = 468;
+gSpriteClips[ 58 ].y =   0;
+gSpriteClips[ 58 ].w =  38;
+gSpriteClips[ 58 ].h =  36;
+
+// Player with shovel facing down (left)
+gSpriteClips[ 59 ].x = 423;
+gSpriteClips[ 59 ].y =  38;
+gSpriteClips[ 59 ].w =  36;
+gSpriteClips[ 59 ].h =  38;
+
+gSpriteClips[ 60 ].x = 463;
+gSpriteClips[ 60 ].y =  38;
+gSpriteClips[ 60 ].w =  36;
+gSpriteClips[ 60 ].h =  36;
+
+// Player with shovel facing up (left)
+gSpriteClips[ 61 ].x = 423;
+gSpriteClips[ 61 ].y =  88;
+gSpriteClips[ 61 ].w =  36;
+gSpriteClips[ 61 ].h =  38;
+
+gSpriteClips[ 62 ].x = 463;
+gSpriteClips[ 62 ].y =  88;
+gSpriteClips[ 62 ].w =  36;
+gSpriteClips[ 62 ].h =  38;

@@ -12,7 +12,7 @@
 using namespace std;
 
 class Enemy : public Character{
-// test comment
+
 	friend class tempBoard;
 	friend class Character;
 	friend class Point;

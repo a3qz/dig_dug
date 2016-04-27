@@ -15,7 +15,7 @@
 
 using namespace std;
 
-void check_dead(int player_x, int player_y, vector<int> monster_locations);
+int check_dead(int player_x, int player_y, vector<int> monster_locations);
 //Screen dimension constants
 const int SCREEN_WIDTH = 504;
 const int SCREEN_HEIGHT = 684;
@@ -147,7 +147,13 @@ int main( int argc, char* args[] )
 				contact.empty();
 				contact.push_back(enemy.get_xpos());
 				contact.push_back(enemy.get_ypos());
-				check_dead(player_character.get_xpos(), player_character.get_ypos(), contact);
+				if (check_dead(player_character.get_xpos(), player_character.get_ypos(), contact)){
+					cout << "DIEEEEEEEEEEE" << endl;
+					player_character.die(gRenderer, board);
+					SDL_RenderPresent( gRenderer );
+					return 0;
+				}
+				
 				enemy.dug(gRenderer,board);
 				enemy.render(gRenderer);
 				enemy.render(gRenderer);
@@ -242,15 +248,17 @@ bool init(SDL_Renderer *& gRenderer, SDL_Window *& gWindow)
 
 
 
-void check_dead(int player_x, int player_y, vector<int> monster_locations){
+int check_dead(int player_x, int player_y, vector<int> monster_locations){
 	for (int i = 1; i < monster_locations.size() ; i += 2){
 		if ((monster_locations[i -1] <= player_x+35) & (monster_locations[i-1]+35 >= player_x )){
 				cout << "XCONTACT" << endl;
 			if((monster_locations[i] <= player_y+35) & (monster_locations[i]+35 >= player_y)){
 				cout << "YCONTACT" << endl;
+				return 1;
 			}
 		}
 	}
+	return 0;
 
 
 }

@@ -30,6 +30,7 @@ class Character {
 		int get_yspeed();
 		int get_state();
 		int get_dirstat();
+		void die(SDL_Renderer *& gRenderer, tempBoard & myBoard);
 	private:
 		int xpos; // x position
 		int ypos; // y position
@@ -41,7 +42,7 @@ class Character {
 		int walkanimatecount;
 		int type;
 		//Scene sprites
-		SDL_Rect gSpriteClips[ 45];
+		SDL_Rect gSpriteClips[ 51];
 		LTexture gSpriteSheetTexture;
 };
 #endif

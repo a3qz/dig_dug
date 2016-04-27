@@ -566,3 +566,45 @@ void Character::die(SDL_Renderer *& gRenderer , tempBoard & myBoard){
 	
 	usleep(500000);
 }
+
+
+void Character::shoot(SDL_Renderer *& gRenderer , tempBoard & myBoard){
+
+	direction = get_dirstat();
+	
+	switch (direction)
+
+	case 'u':
+		SDL_SetRenderDrawColor( gRenderer, 0, 0, 0, 0);
+		SDL_RenderFillRect( gRenderer, &r);
+		SDL_RenderPresent(gRenderer);
+		gSpriteSheetTexture.renderClip( gRenderer, xpos, ypos, &gSpriteClips[ 55 ]);
+		SDL_RenderPresent(gRenderer);
+		usleep(500000);
+	
+		SDL_RenderFillRect( gRenderer, &r);
+		SDL_RenderPresent(gRenderer);
+		gSpriteSheetTexture.renderClip( gRenderer, xpos, ypos, &gSpriteClips[ 47 ]);
+		SDL_RenderPresent(gRenderer);
+		usleep(500000);
+	
+	
+		SDL_RenderFillRect( gRenderer, &r);
+		SDL_RenderPresent(gRenderer);
+		gSpriteSheetTexture.renderClip( gRenderer, xpos, ypos, &gSpriteClips[ 48 ]);
+		SDL_RenderPresent(gRenderer);
+	
+		usleep(500000);
+	
+		SDL_RenderFillRect( gRenderer, &r);
+		SDL_RenderPresent(gRenderer);
+		gSpriteSheetTexture.renderClip( gRenderer, xpos, ypos, &gSpriteClips[ 49 ]);
+		SDL_RenderPresent(gRenderer);
+		usleep(500000);
+
+		SDL_RenderFillRect( gRenderer, &r);
+		SDL_RenderPresent(gRenderer);
+		gSpriteSheetTexture.renderClip( gRenderer, xpos, ypos, &gSpriteClips[ 50 ]);
+		SDL_RenderPresent(gRenderer);	
+		usleep(500000);
+}

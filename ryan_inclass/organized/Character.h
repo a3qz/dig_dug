@@ -20,6 +20,7 @@ class Character {
 		bool loadMedia(SDL_Renderer *& gRenderer);
 		void render(SDL_Renderer *& gRenderer);
 		void dug(SDL_Renderer *& gRenderer, tempBoard & asd );
+		void shoot(SDL_Renderer *& gRenderer, TempBoard & myBoard)
 		/*
 		Get Functions
 		*/

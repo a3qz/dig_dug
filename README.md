@@ -2,6 +2,8 @@
 Fundamentals 2 Final Project 
 Ryan Michalec and Jess Cioffi
 
+[Time log] https://docs.google.com/spreadsheets/d/1_oODkY1Xm41ydkTGvraeTkIIeqj-HuKvUVwQ2rqglJA/edit?usp=sharing
+
 Special Libraries
 =================
 The SDL, SDL  image, and SDL ttf libraries are required. 

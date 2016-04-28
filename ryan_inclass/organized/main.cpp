@@ -14,11 +14,13 @@
 #include "Enemy.h"
 #include <vector>
 #include "Flower.h"
+#include "Win.h"
 
 using namespace std;
 
 int check_dead(int player_x, int player_y, vector<int> monster_locations);
 int check_flower(int player_x, int player_y, int flower_x, int flower_y);
+void win(SDL_Renderer *& gRenderer);
 //Screen dimension constants
 const int SCREEN_WIDTH = 504;
 const int SCREEN_HEIGHT = 684;
@@ -54,15 +56,24 @@ int main( int argc, char* args[] )
 	Flower winflower;
 	//Enemy enemy;
 	int numEnemies = 3;
+	int variable = 1;
 	vector<Enemy> enVec;
 	for (int i = 0; i < numEnemies; i++){
+
 		Enemy enemy;
 		enVec.push_back(enemy);
-		enVec[i].set_xpos(rand()%475);
-		rand();
-		rand();
-		rand();
-		enVec[i].set_ypos(rand()%496 + 108);
+		while( variable == 1){
+			enVec[i].set_xpos(rand()%475);
+			rand();
+			rand();
+			rand();
+			enVec[i].set_ypos(rand()%496 + 108);
+			if (abs(enVec[i].get_xpos()-player_character.get_xpos())> 80){
+				if(abs(enVec[i].get_ypos() - player_character.get_ypos()) > 100){
+					variable = 0;
+				}
+			}
+		}
 	}
 	//Start up SDL and create window
 	if( !init(gRenderer, gWindow) )
@@ -99,6 +110,27 @@ int main( int argc, char* args[] )
 			for (int i = 0; i < numEnemies; i++){
 				enVec[i].render(gRenderer);
 				enVec[i].render(gRenderer);
+			}
+			int store = 1;
+			LTexture gSpriteSheetTexture;
+			SDL_Rect gSpriteClips;
+			gSpriteSheetTexture.loadFromFile("./background.png", gRenderer) ;
+			gSpriteClips.x = 0;
+			gSpriteClips.y = 0;
+			gSpriteClips.w = 504;
+			gSpriteClips.w = 684;
+			while (store == 1){
+						gSpriteSheetTexture.renderClip( gRenderer, 0, 0, &gSpriteClips);
+						gSpriteSheetTexture.renderClip( gRenderer, 0, 0, &gSpriteClips);
+				SDL_RenderPresent( gRenderer );
+				SDL_PollEvent( &e ) ;
+				if (e.type == SDL_KEYDOWN){
+					if (e.key.keysym.sym == SDLK_SPACE)
+						store = 0;
+				}
+				
+				
+			
 			}
 			while( !quit )
 			{
@@ -183,6 +215,17 @@ int main( int argc, char* args[] )
 					return 0;
 				}
 				if (check_flower(player_character.get_xpos(), player_character.get_ypos(), winflower.get_xpos(), winflower.get_ypos())){
+	
+				for (int i = 0; i < numEnemies; i++){
+					enVec[i].die(gRenderer, board);
+				}
+				//win(gRenderer);
+				Win winner;
+				winner.loadMedia(gRenderer);
+				winner.render(gRenderer);
+				SDL_RenderPresent( gRenderer );
+				SDL_Delay(5000);	
+
 					return 0;		
 				}
 				
@@ -310,5 +353,39 @@ int check_flower(int player_x, int player_y, int flower_x, int flower_y){
 	return 0;
 
 
+
+}
+
+
+
+void win(SDL_Renderer *& gRenderer){
+	
+	SDL_Rect asdf;
+	asdf.x = 0;
+	asdf.y = 0;
+	asdf.w = 504;
+	asdf.h = 684;
+	SDL_SetRenderDrawColor( gRenderer, 255, 156, 255, 0xFF );
+		SDL_RenderFillRect( gRenderer, &asdf);
+
+		LTexture gSpriteSheetTexture;
+			SDL_Rect gSpriteClips;
+if( !gSpriteSheetTexture.loadFromFile( "./background.png" , gRenderer) )
+
+	{
+		printf( "Failed to load sprite sheet texture!\n" );
+		//success = false;
+	}
+			gSpriteSheetTexture.loadFromFile("./background.png", gRenderer) ;
+			gSpriteClips.x = 0;
+			gSpriteClips.y = 0;
+			gSpriteClips.w = 504;
+			gSpriteClips.w = 684;
+
+						gSpriteSheetTexture.renderClip( gRenderer, 0, 0, &gSpriteClips);
+
+	//SDL_RenderClear( gRenderer );
+	SDL_RenderPresent( gRenderer );
+	SDL_Delay(5000);	
 
 }

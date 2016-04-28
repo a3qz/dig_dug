@@ -26,8 +26,11 @@ Enemy.o:Enemy.h Enemy.cpp
 Flower.o:Flower.h Flower.cpp
 	$(CC) Flower.cpp -c -w -lSDL2_image -lSDL2 -o Flower.o
 
-main : main.cpp sprites.png LTexture.o tempBoard.o Character.o Enemy.o Flower.o
-			$(CC) main.cpp LTexture.o tempBoard.o Point.o Character.o Enemy.o Flower.o -w -lSDL2 -lSDL2_image -lSDL2_ttf -o main
+Win.o:Win.h Win.cpp
+	$(CC) Win.cpp -c -w -lSDL2_image -lSDL2 -o Win.o
+
+main : main.cpp sprites.png LTexture.o tempBoard.o Character.o Enemy.o Flower.o Win.o
+			$(CC) main.cpp LTexture.o tempBoard.o Point.o Character.o Enemy.o Flower.o Win.o -w -lSDL2 -lSDL2_image -lSDL2_ttf -o main
 
 clean:
 	    rm -f $(TARGETS) *.o

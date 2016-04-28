@@ -13,6 +13,7 @@ class Character {
 	friend class tempBoard;
 	friend class Enemy;
 	friend class Flower;
+	friend class Win;
 
 	public:
 		Character();

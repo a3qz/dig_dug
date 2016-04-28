@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "Character.h"
+#include <unistd.h>
 using namespace std;
 
 
@@ -39,7 +40,7 @@ int Enemy::get_ypos(){
 void Enemy::set_state(int a){
 	state = a;
 }
-
+/*
 bool Enemy::loadMedia(SDL_Renderer *& gRenderer)
 {
 	//Loading success flag
@@ -328,7 +329,7 @@ bool Enemy::loadMedia(SDL_Renderer *& gRenderer)
 
 	return success;
 }
-
+*/
 // DO THIS LAST
 void Enemy::render(SDL_Renderer *& gRenderer)
 {
@@ -499,3 +500,42 @@ void Enemy::gmove(char dir)
 	r.h = 36;
 
  }
+
+
+
+void Enemy::die(SDL_Renderer *& gRenderer , tempBoard & myBoard){
+	SDL_SetRenderDrawColor( gRenderer, 0, 0, 0, 0);
+	
+	SDL_RenderFillRect( gRenderer, &r);
+	SDL_RenderPresent(gRenderer);
+	gSpriteSheetTexture.renderClip( gRenderer, xpos, ypos, &gSpriteClips[ 32]);
+	SDL_RenderPresent(gRenderer);
+	usleep(500000);
+	
+	SDL_RenderFillRect( gRenderer, &r);
+	SDL_RenderPresent(gRenderer);
+	gSpriteSheetTexture.renderClip( gRenderer, xpos, ypos, &gSpriteClips[ 33 ]);
+	SDL_RenderPresent(gRenderer);
+	usleep(500000);
+	
+	
+	SDL_RenderFillRect( gRenderer, &r);
+	SDL_RenderPresent(gRenderer);
+	gSpriteSheetTexture.renderClip( gRenderer, xpos, ypos, &gSpriteClips[ 34 ]);
+	SDL_RenderPresent(gRenderer);
+	
+	usleep(500000);
+	
+	SDL_RenderFillRect( gRenderer, &r);
+	SDL_RenderPresent(gRenderer);
+	gSpriteSheetTexture.renderClip( gRenderer, xpos, ypos, &gSpriteClips[ 35 ]);
+	SDL_RenderPresent(gRenderer);
+	usleep(500000);
+/*
+	SDL_RenderFillRect( gRenderer, &r);
+	SDL_RenderPresent(gRenderer);
+	gSpriteSheetTexture.renderClip( gRenderer, xpos, ypos, &gSpriteClips[ 36 ]);
+	SDL_RenderPresent(gRenderer);
+	
+	usleep(500000);*/
+}
